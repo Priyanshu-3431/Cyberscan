@@ -1,0 +1,23 @@
+{
+  "name": "cyberscan",
+  "version": "1.0.0",
+  "description": "- Dynamic browser detection - Current viewport dimensions - Battery status where supported - Visitor public IP + ISP lookup using ipapi.co - Conservative device-brand detection - Permission-based geolocation with live `watchPosition()` while page is active - OpenStreetMap map embed for the current coordinates - Local-only password strength analysis - Mobile-first responsive UI",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Priyanshu-3431/Cyberscan.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Priyanshu-3431/Cyberscan/issues"
+  },
+  "homepage": "https://github.com/Priyanshu-3431/Cyberscan#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
