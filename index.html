@@ -4,7 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#07111f">
+
   <title>CyberLens — Device Security Check</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -33,7 +35,12 @@
 
 </header>
 
+
 <main>
+
+<!-- ==========================================
+     HOME
+========================================== -->
 
 <section id="home" class="hero section">
 
@@ -41,7 +48,9 @@
 
     <div class="shield">◈</div>
 
-    <p class="eyebrow">CYBER SECURITY</p>
+    <p class="eyebrow">
+      CYBER SECURITY
+    </p>
 
     <h1>
       Know your device.<br>
@@ -49,11 +58,14 @@
     </h1>
 
     <p class="hero-copy">
-      A browser-based security check that shows information
-      your current device makes available.
+      A browser-based security check that shows
+      information your current device makes available.
     </p>
 
-    <button id="startBtn" class="primary-btn" type="button">
+    <button
+      id="startBtn"
+      class="primary-btn"
+      type="button">
       START <span>→</span>
     </button>
 
@@ -66,102 +78,187 @@
 </section>
 
 
-<section id="dashboard" class="section hidden">
+<!-- ==========================================
+     DEVICE DASHBOARD
+========================================== -->
+
+<section
+  id="dashboard"
+  class="section hidden">
 
   <div class="section-head">
 
     <div>
-      <p class="eyebrow">YOUR DEVICE</p>
-      <h2>Device information</h2>
+
+      <p class="eyebrow">
+        YOUR DEVICE
+      </p>
+
+      <h2>
+        Device information
+      </h2>
+
     </div>
 
-    <span class="live-dot">● Live</span>
+    <span class="live-dot">
+      ● Live
+    </span>
 
   </div>
 
 
   <div class="cards">
 
+    <!-- Browser -->
+
     <article class="info-card">
 
-      <div class="card-icon">◉</div>
+      <div class="card-icon">
+        ◉
+      </div>
 
       <div>
-        <p class="label">Browser</p>
-        <p class="value" id="browserValue">
+
+        <p class="label">
+          Browser
+        </p>
+
+        <p
+          class="value"
+          id="browserValue">
           Checking…
         </p>
+
       </div>
 
     </article>
 
 
+    <!-- Screen -->
+
     <article class="info-card">
 
-      <div class="card-icon">▣</div>
+      <div class="card-icon">
+        ▣
+      </div>
 
       <div>
-        <p class="label">Screen / Viewport</p>
-        <p class="value" id="screenValue">
+
+        <p class="label">
+          Screen / Viewport
+        </p>
+
+        <p
+          class="value"
+          id="screenValue">
           Checking…
         </p>
+
       </div>
 
     </article>
 
 
+    <!-- Battery -->
+
     <article class="info-card">
 
-      <div class="card-icon">▰</div>
+      <div class="card-icon">
+        ▰
+      </div>
 
       <div>
-        <p class="label">Battery</p>
-        <p class="value" id="batteryValue">
+
+        <p class="label">
+          Battery
+        </p>
+
+        <p
+          class="value"
+          id="batteryValue">
           Checking…
         </p>
-        <p class="subvalue" id="chargingValue"></p>
+
+        <p
+          class="subvalue"
+          id="chargingValue">
+        </p>
+
       </div>
 
     </article>
 
 
+    <!-- Public IP -->
+
     <article class="info-card">
 
-      <div class="card-icon">◎</div>
+      <div class="card-icon">
+        ◎
+      </div>
 
       <div>
-        <p class="label">Public IP</p>
-        <p class="value" id="ipValue">
+
+        <p class="label">
+          Public IP
+        </p>
+
+        <p
+          class="value"
+          id="ipValue">
           Checking…
         </p>
+
       </div>
 
     </article>
 
 
+    <!-- ISP -->
+
     <article class="info-card">
 
-      <div class="card-icon">⌁</div>
+      <div class="card-icon">
+        ⌁
+      </div>
 
       <div>
-        <p class="label">Network / ISP</p>
-        <p class="value" id="ispValue">
+
+        <p class="label">
+          Network / ISP
+        </p>
+
+        <p
+          class="value"
+          id="ispValue">
           Checking…
         </p>
+
       </div>
 
     </article>
 
 
+    <!-- Device Brand -->
+
     <article class="info-card">
 
-      <div class="card-icon">▤</div>
+      <div class="card-icon">
+        ▤
+      </div>
 
       <div>
-        <p class="label">Device Brand</p>
-        <p class="value" id="brandValue">
+
+        <p class="label">
+          Device Brand
+        </p>
+
+        <p
+          class="value"
+          id="brandValue">
           Detecting…
         </p>
+
       </div>
 
     </article>
@@ -169,21 +266,36 @@
   </div>
 
 
+  <!-- ========================================
+       LOCATION
+  ========================================= -->
+
   <section class="location-panel">
 
     <div class="section-head compact">
 
       <div>
-        <p class="eyebrow">LOCATION</p>
-        <h2>Current location</h2>
+
+        <p class="eyebrow">
+          LOCATION
+        </p>
+
+        <h2>
+          Current location
+        </h2>
+
       </div>
 
     </div>
 
 
-    <div id="locationStatus" class="status-box">
+    <div
+      id="locationStatus"
+      class="status-box">
+
       Location access is required to display
       your current location.
+
     </div>
 
 
@@ -191,31 +303,63 @@
       id="locationBtn"
       class="secondary-btn"
       type="button">
+
       Allow Location
+
     </button>
 
 
-    <div id="locationData" class="location-data hidden">
+    <div
+      id="locationData"
+      class="location-data hidden">
+
+
+      <!-- Coordinates -->
 
       <div class="coords">
 
         <div>
-          <span>Latitude</span>
-          <strong id="lat">—</strong>
+
+          <span>
+            Latitude
+          </span>
+
+          <strong id="lat">
+            —
+          </strong>
+
         </div>
 
-        <div>
-          <span>Longitude</span>
-          <strong id="lon">—</strong>
-        </div>
 
         <div>
-          <span>Accuracy</span>
-          <strong id="accuracy">—</strong>
+
+          <span>
+            Longitude
+          </span>
+
+          <strong id="lon">
+            —
+          </strong>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            Accuracy
+          </span>
+
+          <strong id="accuracy">
+            —
+          </strong>
+
         </div>
 
       </div>
 
+
+      <!-- Map -->
 
       <div class="map-wrap">
 
@@ -229,9 +373,12 @@
 
 
       <p class="privacy-note">
-        Your location is requested only after you give
-        browser permission. Live updates run only while
-        this page is active and permission remains granted.
+
+        Your location is requested only after
+        you give browser permission. Live updates
+        run only while this page is active and
+        permission remains granted.
+
       </p>
 
     </div>
@@ -241,13 +388,26 @@
 </section>
 
 
-<section id="password" class="section password-section">
+<!-- ==========================================
+     PASSWORD ANALYZER
+========================================== -->
+
+<section
+  id="password"
+  class="section password-section">
 
   <div class="section-head">
 
     <div>
-      <p class="eyebrow">PASSWORD SECURITY</p>
-      <h2>Password Analyzer</h2>
+
+      <p class="eyebrow">
+        PASSWORD SECURITY
+      </p>
+
+      <h2>
+        Password Analyzer
+      </h2>
+
     </div>
 
   </div>
@@ -256,10 +416,15 @@
   <div class="password-card">
 
     <p class="password-intro">
-      Analyze your password locally. It is never sent
-      to our server or an external API.
+
+      Analyze your password locally.
+      It is never sent to our server
+      or an external API.
+
     </p>
 
+
+    <!-- Password input -->
 
     <label for="passwordInput">
       Password
@@ -274,14 +439,19 @@
         autocomplete="new-password"
         placeholder="Enter password">
 
+
       <button
         id="togglePassword"
         type="button">
+
         Show
+
       </button>
 
     </div>
 
+
+    <!-- Score -->
 
     <div class="score-box">
 
@@ -297,51 +467,98 @@
 
       </div>
 
+
       <div
         class="strength-pill"
         id="strength">
+
         Enter password
+
       </div>
 
     </div>
 
 
+    <!-- Meter -->
+
     <div class="meter">
+
       <span id="meterBar"></span>
+
     </div>
 
+
+    <!-- Analyzer -->
 
     <div class="analyzer-grid">
 
+
+      <!-- Security checks -->
+
       <div class="analysis-block">
 
-        <h3>Security checks</h3>
+        <h3>
+          Security checks
+        </h3>
 
-        <div id="checks" class="checks"></div>
+        <div
+          id="checks"
+          class="checks">
+        </div>
 
       </div>
 
 
+      <!-- Details -->
+
       <div class="analysis-block">
 
-        <h3>Password details</h3>
+        <h3>
+          Password details
+        </h3>
+
 
         <div class="detail-list">
 
-          <div>
-            <span>Length</span>
-            <strong id="lengthDetail">0</strong>
-          </div>
 
           <div>
-            <span>Character types</span>
-            <strong id="typesDetail">0/4</strong>
+
+            <span>
+              Length
+            </span>
+
+            <strong id="lengthDetail">
+              0
+            </strong>
+
           </div>
 
+
           <div>
-            <span>Crack-time category</span>
-            <strong id="crackTime">—</strong>
+
+            <span>
+              Character types
+            </span>
+
+            <strong id="typesDetail">
+              0/4
+            </strong>
+
           </div>
+
+
+          <div>
+
+            <span>
+              Crack-time category
+            </span>
+
+            <strong id="crackTime">
+              —
+            </strong>
+
+          </div>
+
 
         </div>
 
@@ -350,27 +567,42 @@
     </div>
 
 
-    <div class="suggestion-box" id="suggestions">
+    <!-- Suggestions -->
 
-      <strong>💡 Suggestions</strong>
+    <div
+      class="suggestion-box"
+      id="suggestions">
+
+      <strong>
+        💡 Suggestions
+      </strong>
 
       <p>
-        Enter a password to receive personalized suggestions.
+
+        Enter a password to receive
+        personalized suggestions.
+
       </p>
 
     </div>
 
 
+    <!-- Generator -->
+
     <div class="generator">
+
 
       <div class="generator-head">
 
         <div>
 
-          <h3>Strong Password Generator</h3>
+          <h3>
+            Strong Password Generator
+          </h3>
 
           <p>
-            Generate a password locally in your browser.
+            Generate a password locally
+            in your browser.
           </p>
 
         </div>
@@ -378,9 +610,13 @@
       </div>
 
 
+      <!-- Generator controls -->
+
       <div class="generator-controls">
 
+
         <label>
+
           Length
 
           <input
@@ -389,46 +625,62 @@
             min="8"
             max="64"
             value="16">
+
         </label>
 
 
         <label>
+
           <input
             id="genUpper"
             type="checkbox"
             checked>
+
           Uppercase
+
         </label>
 
 
         <label>
+
           <input
             id="genLower"
             type="checkbox"
             checked>
+
           Lowercase
+
         </label>
 
 
         <label>
+
           <input
             id="genNumber"
             type="checkbox"
             checked>
+
           Numbers
+
         </label>
 
 
         <label>
+
           <input
             id="genSymbol"
             type="checkbox"
             checked>
+
           Symbols
+
         </label>
+
 
       </div>
 
+
+      <!-- Generated password -->
 
       <div class="generated-row">
 
@@ -438,10 +690,13 @@
           readonly
           placeholder="Generated password">
 
+
         <button
           id="copyGenerated"
           type="button">
+
           Copy
+
         </button>
 
       </div>
@@ -451,38 +706,57 @@
         id="generateBtn"
         class="secondary-btn"
         type="button">
+
         Generate Strong Password
+
       </button>
+
 
     </div>
 
+
+    <!-- Clear -->
 
     <button
       id="clearPassword"
       class="clear-btn"
       type="button">
+
       Clear
+
     </button>
 
 
     <p class="password-warning">
+
       ⚠ Strong does not mean 100% secure.
       Never reuse important passwords.
+
     </p>
+
 
   </div>
 
 </section>
 
 
+<!-- ==========================================
+     PRIVACY
+========================================== -->
+
 <section class="privacy-banner">
 
-  <strong>Privacy</strong>
+  <strong>
+    Privacy
+  </strong>
 
   <span>
-    Device information is displayed from your browser/device.
-    Location is requested only after you grant permission.
-    Your password is checked locally and is never sent to our server.
+
+    Device information is displayed from
+    your browser/device. Location is requested
+    only after you grant permission. Your password
+    is checked locally and is never sent to our server.
+
   </span>
 
 </section>
@@ -490,12 +764,38 @@
 </main>
 
 
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
 <footer>
+
   CyberLens • PRIYANSHU YADAV
+
 </footer>
 
 
+<!-- ==========================================
+     VERCEL WEB ANALYTICS
+========================================== -->
+
+<script type="module">
+
+  import {
+    inject
+  } from "https://esm.sh/@vercel/analytics@2.0.1";
+
+  inject();
+
+</script>
+
+
+<!-- ==========================================
+     MAIN JAVASCRIPT
+========================================== -->
+
 <script src="script.js"></script>
+
 
 </body>
 </html>
