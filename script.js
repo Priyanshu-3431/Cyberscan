@@ -110,62 +110,65 @@ async function loadBattery() {
 // ======================================================
 // DEVICE BRAND DETECTION
 // ======================================================
-
 async function detectBrand() {
   const ua = navigator.userAgent || "";
 
-  // ----------------------------------------------------
+  // ==========================================
   // APPLE
-  // ----------------------------------------------------
+  // ==========================================
 
   if (/iPhone|iPad|iPod/i.test(ua)) {
     return "Apple";
   }
 
-  // ----------------------------------------------------
+
+  // ==========================================
   // DIRECT USER-AGENT BRAND DETECTION
-  // ----------------------------------------------------
+  // ==========================================
 
   const brands = [
 
     // Samsung
     [/Samsung|SM-[A-Z0-9]+/i, "Samsung"],
 
-    // Xiaomi Family
-    [/Xiaomi|Redmi|POCO|MiuiBrowser/i, "Xiaomi / Redmi / POCO"],
+    // Xiaomi / Redmi / POCO
+    [
+      /Xiaomi|Redmi|POCO|MiuiBrowser|MIUI/i,
+      "Xiaomi / Redmi / POCO"
+    ],
 
     // OnePlus
-    [/OnePlus/i, "OnePlus"],
+    [/OnePlus|ONEPLUS/i, "OnePlus"],
 
     // OPPO
-    [/OPPO/i, "OPPO"],
+    [/OPPO|CPH[0-9]+/i, "OPPO"],
 
-    // Vivo
+    // vivo
     [/vivo/i, "vivo"],
 
-    // Realme
-    [/realme|RMX/i, "realme"],
+    // realme
+    [/realme|RMX[0-9]+/i, "realme"],
 
     // Motorola
-    [/Motorola|moto/i, "Motorola"],
+    [/Motorola|Moto|moto/i, "Motorola"],
 
     // Huawei
-    [/HUAWEI/i, "Huawei"],
+    [/Huawei|HUAWEI/i, "Huawei"],
 
-    // Honor
-    [/HONOR/i, "HONOR"],
+    // HONOR
+    [/HONOR|Honor/i, "HONOR"],
 
-    // Google Pixel
+    // Google
     [/Pixel/i, "Google"],
 
     // Nokia
     [/Nokia/i, "Nokia"],
 
     // Sony
-    [/Sony/i, "Sony"],
+    [/Sony|Xperia/i, "Sony"],
 
     // ASUS
-    [/ASUS|Zenfone|ROG Phone/i, "ASUS"],
+    [/ASUS|Zenfone|ROG Phone|ROG/i, "ASUS"],
 
     // ZTE
     [/ZTE/i, "ZTE"],
@@ -174,7 +177,7 @@ async function detectBrand() {
     [/nubia/i, "nubia"],
 
     // REDMAGIC
-    [/RedMagic/i, "REDMAGIC"],
+    [/RedMagic|REDMAGIC/i, "REDMAGIC"],
 
     // Infinix
     [/Infinix/i, "Infinix"],
@@ -257,8 +260,8 @@ async function detectBrand() {
     // Videocon
     [/Videocon/i, "Videocon"],
 
-    // Doogee
-    [/Doogee/i, "DOOGEE"],
+    // DOOGEE
+    [/Doogee|DOOGEE/i, "DOOGEE"],
 
     // Ulefone
     [/Ulefone/i, "Ulefone"],
@@ -285,49 +288,202 @@ async function detectBrand() {
     [/Doro/i, "Doro"]
   ];
 
+
   for (const [regex, brand] of brands) {
     if (regex.test(ua)) {
       return brand;
     }
   }
 
-  // ----------------------------------------------------
-  // USER-AGENT CLIENT HINTS
-  // ----------------------------------------------------
+
+  // ==========================================
+  // ANDROID USER AGENT CLIENT HINTS
+  // ==========================================
 
   if (
     navigator.userAgentData &&
-    typeof navigator.userAgentData.getHighEntropyValues === "function"
+    typeof navigator.userAgentData.getHighEntropyValues ===
+      "function"
   ) {
+
     try {
+
       const data =
         await navigator.userAgentData.getHighEntropyValues([
           "model",
-          "platform"
+          "platform",
+          "platformVersion",
+          "mobile"
         ]);
 
-      const model = data.model || "";
-      const platform = data.platform || "";
 
-      const deviceInfo = `${model} ${platform}`;
+      const model =
+        String(data.model || "").trim();
 
-      const hintBrands = [
+      const platform =
+        String(data.platform || "").trim();
+
+
+      const deviceInfo =
+        `${model} ${platform}`;
+
+
+      // ========================================
+      // MODEL IDENTIFIER DETECTION
+      // ========================================
+
+      const modelBrands = [
+
+        // Samsung
+        [/^SM-/i, "Samsung"],
+        [/Galaxy/i, "Samsung"],
+
+        // Xiaomi / Redmi / POCO
+        [/Redmi/i, "Xiaomi / Redmi / POCO"],
+        [/POCO/i, "Xiaomi / Redmi / POCO"],
+        [/Xiaomi/i, "Xiaomi / Redmi / POCO"],
+
+        // OnePlus
+        [/OnePlus/i, "OnePlus"],
+
+        // OPPO
+        [/^CPH/i, "OPPO"],
+        [/OPPO/i, "OPPO"],
+
+        // vivo
+        [/^V[0-9]{2}/i, "vivo"],
+        [/vivo/i, "vivo"],
+
+        // realme
+        [/^RMX/i, "realme"],
+        [/realme/i, "realme"],
+
+        // Motorola
+        [/Moto/i, "Motorola"],
+        [/Motorola/i, "Motorola"],
+
+        // Huawei
+        [/Huawei/i, "Huawei"],
+
+        // HONOR
+        [/Honor/i, "HONOR"],
+
+        // Google
+        [/Pixel/i, "Google"],
+
+        // Nokia
+        [/Nokia/i, "Nokia"],
+
+        // Sony
+        [/Xperia/i, "Sony"],
+        [/Sony/i, "Sony"],
+
+        // ASUS
+        [/ASUS/i, "ASUS"],
+        [/Zenfone/i, "ASUS"],
+        [/ROG/i, "ASUS"],
+
+        // ZTE
+        [/ZTE/i, "ZTE"],
+
+        // nubia
+        [/nubia/i, "nubia"],
+
+        // Infinix
+        [/Infinix/i, "Infinix"],
+
+        // TECNO
+        [/TECNO/i, "TECNO"],
+
+        // itel
+        [/itel/i, "itel"],
+
+        // Nothing
+        [/Nothing/i, "Nothing"],
+
+        // iQOO
+        [/iQOO/i, "iQOO"],
+
+        // TCL
+        [/TCL/i, "TCL"],
+
+        // Lenovo
+        [/Lenovo/i, "Lenovo"],
+
+        // LG
+        [/^LG/i, "LG"],
+
+        // HTC
+        [/HTC/i, "HTC"],
+
+        // Meizu
+        [/Meizu/i, "Meizu"],
+
+        // Lava
+        [/Lava/i, "Lava"],
+
+        // Micromax
+        [/Micromax/i, "Micromax"],
+
+        // Karbonn
+        [/Karbonn/i, "Karbonn"],
+
+        // Gionee
+        [/Gionee/i, "Gionee"],
+
+        // Intex
+        [/Intex/i, "Intex"],
+
+        // DOOGEE
+        [/DOOGEE/i, "DOOGEE"],
+
+        // Ulefone
+        [/Ulefone/i, "Ulefone"],
+
+        // OUKITEL
+        [/OUKITEL/i, "OUKITEL"],
+
+        // Blackview
+        [/Blackview/i, "Blackview"],
+
+        // UMIDIGI
+        [/UMIDIGI/i, "UMIDIGI"]
+      ];
+
+
+      for (const [regex, brand] of modelBrands) {
+
+        if (regex.test(model)) {
+          return brand;
+        }
+
+      }
+
+
+      // ========================================
+      // COMBINED MODEL + PLATFORM CHECK
+      // ========================================
+
+      const combinedBrands = [
 
         [/Samsung|SM-/i, "Samsung"],
 
-        [/Xiaomi|Redmi|POCO|MI /i, "Xiaomi / Redmi / POCO"],
+        [
+          /Xiaomi|Redmi|POCO/i,
+          "Xiaomi / Redmi / POCO"
+        ],
 
         [/OnePlus/i, "OnePlus"],
 
         [/OPPO|CPH/i, "OPPO"],
 
-        [/vivo|V2[0-9]/i, "vivo"],
+        [/vivo/i, "vivo"],
 
         [/realme|RMX/i, "realme"],
 
-        [/Motorola|moto/i, "Motorola"],
+        [/Motorola|Moto/i, "Motorola"],
 
-        [/HUAWEI/i, "Huawei"],
+        [/Huawei/i, "Huawei"],
 
         [/HONOR/i, "HONOR"],
 
@@ -335,7 +491,7 @@ async function detectBrand() {
 
         [/Nokia/i, "Nokia"],
 
-        [/Sony/i, "Sony"],
+        [/Sony|Xperia/i, "Sony"],
 
         [/ASUS|Zenfone|ROG/i, "ASUS"],
 
@@ -349,9 +505,9 @@ async function detectBrand() {
 
         [/itel/i, "itel"],
 
-        [/iQOO/i, "iQOO"],
-
         [/Nothing/i, "Nothing"],
+
+        [/iQOO/i, "iQOO"],
 
         [/TCL/i, "TCL"],
 
@@ -368,35 +524,44 @@ async function detectBrand() {
         [/Micromax/i, "Micromax"]
       ];
 
-      for (const [regex, brand] of hintBrands) {
+
+      for (const [regex, brand] of combinedBrands) {
+
         if (regex.test(deviceInfo)) {
           return brand;
         }
+
       }
 
     } catch (error) {
+
       console.log(
         "Browser restricted device information:",
         error
       );
+
     }
+
   }
 
-  // ----------------------------------------------------
-  // MAC
-  // ----------------------------------------------------
+
+  // ==========================================
+  // DESKTOP
+  // ==========================================
 
   if (/Macintosh/i.test(ua)) {
     return "Apple";
   }
 
-  // ----------------------------------------------------
-  // ANDROID BUT BRAND NOT EXPOSED
-  // ----------------------------------------------------
+
+  // ==========================================
+  // ANDROID FALLBACK
+  // ==========================================
 
   if (/Android/i.test(ua)) {
     return "Android brand unavailable";
   }
+
 
   return "Device brand unavailable";
 }
